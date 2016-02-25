@@ -13,7 +13,6 @@ RUN . ~/.nvm/nvm.sh && \
 RUN . ~/.nvm/nvm.sh && \
 	ln -s /usr/local/nvm/versions/node/v$NODE_VERSION/bin/node /usr/bin/node && \
 	npm install -g nrm && \
-	nrm use taobao && \
 	npm install -g pm2 
 
 RUN yum -y install openssh-server
@@ -27,6 +26,6 @@ RUN mkdir /www && touch /start.sh && chmod 777 /start.sh
 RUN echo '#!/bin/bash' > /start.sh && \
     echo 'source ~/.bashrc' >> /start.sh && \
     echo '# pm2 start /www/app.js' >> /start.sh && \
-    echo '/usr/sbin/sshd -D' >>/start.sh
+    echo '/usr/sbin/sshd -D' >> /start.sh
 
 CMD ["/bin/bash", "/start.sh"]
