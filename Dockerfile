@@ -3,7 +3,7 @@ MAINTAINER feiin(http://github.com/feiin)
 
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
 
-ENV NODE_VERSION 4.3.1
+ENV NODE_VERSION 4.3.2
 
 RUN . ~/.nvm/nvm.sh && \
     nvm install $NODE_VERSION && \
