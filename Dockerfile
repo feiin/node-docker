@@ -3,7 +3,7 @@ MAINTAINER feiin(http://github.com/feiin)
 
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
 
-ENV NODE_VERSION 4.3.2
+ENV NODE_VERSION 4.4.5
 
 RUN . ~/.nvm/nvm.sh && \
     nvm install $NODE_VERSION && \
@@ -21,11 +21,8 @@ RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -C '' -N '' && \
     ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -C '' -N ''  && \
     ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -C '' -N ''
 
-RUN mkdir /www && touch /start.sh && chmod 777 /start.sh
+RUN mkdir /www
 
-RUN echo '#!/bin/bash' > /start.sh && \
-    echo 'source ~/.bashrc' >> /start.sh && \
-    echo '# pm2 start /www/app.js' >> /start.sh && \
-    echo '/usr/sbin/sshd -D' >> /start.sh
+COPY start.sh /
 
 CMD ["/bin/bash", "/start.sh"]
