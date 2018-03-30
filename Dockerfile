@@ -1,9 +1,9 @@
 FROM centos:latest
 MAINTAINER feiin(http://github.com/feiin)
 
-RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
 
-ENV NODE_VERSION 4.4.7
+ENV NODE_VERSION 8.11.0
 
 RUN . ~/.nvm/nvm.sh && \
     nvm install $NODE_VERSION && \
